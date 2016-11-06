@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSE436 Project I Homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.min.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="description">
+        <p class="maintext">
+          CSE462 CEA Application
+        </p>
+        <p>
+          Enter your phone number then click desired function!
+        </p>
+        <p>
+          Call fuction only support Turkcell numbers.
+        </p>
+      </div>
+
+
+
+      <div class="content-gr">
+
+
+      <div class="textarea">
+          <input type="text" name="name" value="" id="phone"  placeholder="5070479894" class="input-lg " required>
+          <div class="button-group">
+            <button type="submit" name="button" id="submitcall" class="btn btn-success">Call</button>
+            <button type="submit" name="button" id="submitsms" class="btn btn-danger">Sms</button>
+        </div>
+
+      </div>
+      <div class="texta">
+        <textarea id= "text" rows="4" cols="50" placeholder="Type your sms message or text-to-speech text here..." class="input-lg desc" ></textarea>
+      </div>
+    </div>
+
+
+    </div>
+  </body>
+
+
+  <script type="text/javascript">
+  $('#submitcall').click(function()
+  {
+    if ($('#phone').val() && $('#text').val()) {
+      $.ajax({
+        url: '/go',
+        type:'POST',
+        data:
+        {
+            number: $("#phone").val(),
+            param: "phone",
+            text: $('#text').val()
+        },
+        success: function(number)
+        {
+            alert('Request to ' + $("#phone").val() + ' sent check your phone!');
+        }
+      });
+        }
+        else  {
+          alert("fill in the blank!")
+        }
+  });
+
+  $('#submitsms').click(function()
+  {
+    if ($('#phone').val() && $('#text').val() ) {
+      $.ajax({
+        url: '/go',
+        type:'POST',
+        data:
+        {
+            number: $("#phone").val(),
+            param: 'sms',
+            text : $('#text').val()
+        },
+        success: function(number)
+        {
+            alert('Request to ' + $("#phone").val() + ' sent check your phone!');
+        }
+      });
+        }
+        else  {
+          alert("fill in the blank!")
+        }
+  });
+  </script>
+</html>

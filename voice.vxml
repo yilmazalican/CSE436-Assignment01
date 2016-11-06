@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version = "2.1" >
+   <form>
+      <block>
+       <prompt xml:lang="tr-tr-female">
+          Merhabalar Erdal Hocam. Ben Özge Meva. Bu bant kaydı deneme bir kayıttır. CSE 436 dersi için oluşturduğum projenin çalıştığına dair bir mesajdır. Bu fonksiyon için Nexmo Call API kullandım. Saygılarımla, Özge Meva Demiröz.
+         </prompt>
+      </block>
+   </form>
+</vxml>
